@@ -1,6 +1,8 @@
-# Pintgrab
-
 <div align="center">
+
+<img src="https://raw.githubusercontent.com/SBP359/pintgrab-firefox/bbd55b2a5f21a09af5303e38ddc2b855d989458c/logo.png" alt="Pintgrab Logo" width="120" height="120">
+
+# Pintgrab
 
 ### Download Pinterest media in its highest available quality
 
@@ -28,14 +30,12 @@
 
 Downloads are organized into:
 
-```text
-Downloads/
-└── Pintgrab/
-    └── <board-or-board-title>/
-        └── <pin-title>-pin-<pin-id>.<format>
-```
+    Downloads/
+    └── Pintgrab/
+        └── <board-or-board-title>/
+            └── <pin-title>-pin-<pin-id>.<format>
 
-The extension attempts to preserve the original HD image or video quality and supports images, GIFs, and MP4 video pins.
+> **Quality First:** The extension attempts to preserve the original HD image or video quality and supports images, GIFs, and MP4 video pins.
 
 ---
 
@@ -64,9 +64,11 @@ The extension attempts to preserve the original HD image or video quality and su
 
 Enter a custom value or move the slider to choose how many unique pins Pintgrab should collect:
 
-- Minimum: **10 pins**
-- Maximum: **1,000 pins**
-- Default: **50 pins**
+| Setting | Value |
+| :--- | :--- |
+| **Minimum** | 10 pins |
+| **Default** | 50 pins |
+| **Maximum** | 1,000 pins |
 
 The number and slider stay synchronized, and both the limit and scroll delay are remembered for your next popup session.
 
@@ -74,9 +76,11 @@ The number and slider stay synchronized, and both the limit and scroll delay are
 
 Use the **Scroll speed delay** slider to control the pause between page scrolls:
 
-- Minimum: **250 ms**
-- Default: **450 ms**
-- Maximum: **1,000 ms**
+| Setting | Value |
+| :--- | :--- |
+| **Minimum** | 250 ms |
+| **Default** | 450 ms |
+| **Maximum** | 1,000 ms |
 
 Click the circular **i** button beside the label for an explanation. Increase the delay if you have a slow or unstable internet connection, or if the full grab is missing pins. A longer delay gives Pinterest more time to load content.
 
@@ -127,26 +131,22 @@ On pin detail pages, the bulk action changes to **Grab Related Pins Below**.
 
 The project can be packaged as a ZIP file without changing its contents:
 
-```powershell
-Compress-Archive -Path manifest.json, background.js, constants.js, content.js, logo.png, icons, popup -DestinationPath pintgrab-firefox.zip -Force
-```
+    Compress-Archive -Path manifest.json, background.js, constants.js, content.js, logo.png, icons, popup -DestinationPath pintgrab-firefox.zip -Force
 
 ---
 
 ## Project Structure
 
-```text
-pintgrab-firefox/
-├── manifest.json       # Extension manifest and permissions
-├── background.js       # Media resolution and native download handling
-├── constants.js        # Shared version and default configuration
-├── content.js          # Pinterest page scanning and bulk downloads
-├── README.md           # Project documentation
-└── popup/
-    ├── popup.html      # Popup interface
-    ├── popup.css       # Popup styling
-    └── popup.js        # Popup state and controls
-```
+    pintgrab-firefox/
+    ├── manifest.json       # Extension manifest and permissions
+    ├── background.js       # Media resolution and native download handling
+    ├── constants.js        # Shared version and default configuration
+    ├── content.js          # Pinterest page scanning and bulk downloads
+    ├── README.md           # Project documentation
+    └── popup/
+        ├── popup.html      # Popup interface
+        ├── popup.css       # Popup styling
+        └── popup.js        # Popup state and controls
 
 ---
 
@@ -154,19 +154,19 @@ pintgrab-firefox/
 
 Pintgrab supports Pinterest country domains, including:
 
-- pinterest.com
-- pinterest.co.uk
-- pinterest.ca
-- pinterest.de
-- pinterest.fr
-- pinterest.in
-- pinterest.jp
-- pinterest.es
-- pinterest.it
-- pinterest.com.au
-- pinterest.pt
-- pinterest.com.mx
-- pinterest.ph
+- `pinterest.com`
+- `pinterest.co.uk`
+- `pinterest.ca`
+- `pinterest.de`
+- `pinterest.fr`
+- `pinterest.in`
+- `pinterest.jp`
+- `pinterest.es`
+- `pinterest.it`
+- `pinterest.com.au`
+- `pinterest.pt`
+- `pinterest.com.mx`
+- `pinterest.ph`
 
 ---
 
@@ -175,7 +175,7 @@ Pintgrab supports Pinterest country domains, including:
 Pintgrab requests only the permissions needed for its core behavior:
 
 | Permission | Purpose |
-|---|---|
+| :--- | :--- |
 | `activeTab` | Read the active Pinterest tab and communicate with it |
 | `tabs` | Detect supported pages and open Pinterest links |
 | `downloads` | Save files through Firefox's native download manager |
