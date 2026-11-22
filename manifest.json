@@ -1,0 +1,88 @@
+{
+  "manifest_version": 3,
+  "name": "Pintgrab",
+  "version": "1.0.1",
+  "description": "Download original HD images, GIFs, and MP4 videos from Pinterest pins and boards in one click.",
+  "author": "sbp359",
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "64": "icons/icon64.png",
+      "128": "icons/icon128.png"
+    },
+    "default_popup": "popup/popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "64": "icons/icon64.png",
+    "256": "icons/icon256.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "pintgrab@sbp359.github.io",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "downloads",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.pinterest.com/*",
+    "https://*.pinterest.co.uk/*",
+    "https://*.pinterest.ca/*",
+    "https://*.pinterest.de/*",
+    "https://*.pinterest.fr/*",
+    "https://*.pinterest.in/*",
+    "https://*.pinterest.jp/*",
+    "https://*.pinterest.es/*",
+    "https://*.pinterest.it/*",
+    "https://*.pinterest.com.au/*",
+    "https://*.pinterest.pt/*",
+    "https://*.pinterest.com.mx/*",
+    "https://*.pinterest.ph/*",
+    "https://*.pinimg.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.pinterest.com/*",
+        "https://*.pinterest.co.uk/*",
+        "https://*.pinterest.ca/*",
+        "https://*.pinterest.de/*",
+        "https://*.pinterest.fr/*",
+        "https://*.pinterest.in/*",
+        "https://*.pinterest.jp/*",
+        "https://*.pinterest.es/*",
+        "https://*.pinterest.it/*",
+        "https://*.pinterest.com.au/*",
+        "https://*.pinterest.pt/*",
+        "https://*.pinterest.com.mx/*",
+        "https://*.pinterest.ph/*"
+      ],
+      "js": [
+        "constants.js",
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}

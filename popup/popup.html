@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pintgrab</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="card">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-container">
+        <img class="logo" src="../logo.png" alt="Pintgrab Logo">
+      </div>
+      <div class="title-container">
+        <div class="title-row">
+          <h1>Pintgrab</h1>
+          <span class="version-badge" id="app-version">v1.0.0</span>
+        </div>
+        <p class="subtitle">HD Pinterest image, GIF &amp; video grabber</p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <!-- 1. Domain Warning (when not on Pinterest) -->
+      <div class="domain-warning-box hidden" id="domain-warning-box">
+        <div class="warning-icon-wrapper">
+          <svg class="warning-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="warning-text-container">
+          <span class="warning-badge" id="current-domain-badge">Unsupported site</span>
+          <h2 class="warning-title">Open Pinterest to grab pins</h2>
+          <p class="warning-desc">Open any Pinterest pin, board, or feed to download HD images, GIFs, and videos.</p>
+        </div>
+        <button class="action-btn navigate-btn" id="open-pinterest-btn">
+          <span>Go to Pinterest</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 2. Download Controls (when on Pinterest) -->
+      <div class="download-controls" id="download-controls">
+        <!-- Status Box -->
+        <div class="status-box">
+          <div class="status-indicator">
+            <span class="pulse-dot idle" id="pulse-dot"></span>
+            <span class="status-text" id="status-text">Ready to grab</span>
+          </div>
+          <p class="status-detail" id="status-detail">Hover any pin on the page to save it, or grab in bulk below.</p>
+        </div>
+
+        <!-- Progress Container -->
+        <div class="progress-container hidden" id="progress-container">
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+          </div>
+          <div class="progress-labels">
+            <span id="progress-percent">0%</span>
+            <span id="progress-count">0 / 0 pins</span>
+          </div>
+        </div>
+
+        <!-- Single Pin Action (shown prominently on /pin/ pages) -->
+        <button class="action-btn hidden" id="grab-pin-btn">
+          <span class="btn-text">Download This Pin (HD)</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+        </button>
+
+        <!-- Bulk Board / Feed Settings -->
+        <div class="settings-box" id="bulk-settings-box">
+          <div class="setting-row">
+            <label for="max-pins-range">Max pins to grab</label>
+            <div class="number-control">
+              <input type="number" id="max-pins-input" min="10" max="1000" step="10" value="50" aria-label="Maximum pins to grab">
+              <span>pins</span>
+            </div>
+          </div>
+          <input type="range" id="max-pins-range" min="10" max="1000" step="10" value="50">
+
+          <div class="setting-row setting-row-spaced">
+            <div class="label-with-info">
+              <label for="delay-range">Scroll speed delay</label>
+              <button type="button" class="info-button" id="delay-info-btn" aria-label="About scroll speed delay" aria-expanded="false">i</button>
+            </div>
+            <span class="pill-value" id="delay-value">450ms</span>
+          </div>
+          <div class="info-popover hidden" id="delay-info-popover" role="tooltip">
+            If you have a slow or unstable internet connection, or some pins are missing from the full grab, increase the delay. Higher delays give Pinterest more time to load between scrolls.
+          </div>
+          <input type="range" id="delay-range" min="250" max="1000" step="50" value="450">
+          <p class="setting-desc">Saves into <strong>Downloads/Pintgrab/</strong> in original HD quality.</p>
+        </div>
+
+        <!-- Bulk Action Button -->
+        <button class="action-btn" id="bulk-btn">
+          <span class="btn-text">Grab Board / Visible Pins</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-links-row">
+        <a href="https://github.com/sbp359" target="_blank" rel="noopener noreferrer" class="footer-pill footer-link">
+          GitHub
+        </a>
+        <a href="https://ko-fi.com/sbp359" target="_blank" rel="noopener noreferrer" class="footer-pill footer-link">
+          Support on Ko-fi
+        </a>
+      </div>
+      <div class="footer-signature">
+        <span>Made with <span class="heart-icon">❤️</span> by <a href="https://github.com/sbp359" target="_blank"
+            rel="noopener noreferrer" class="author-name footer-link">sbp359</a></span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../constants.js"></script>
+  <script src="popup.js"></script>
+</body>
+
+</html>
