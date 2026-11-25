@@ -9,7 +9,7 @@
 **A fast, private, and easy-to-use Firefox extension for saving Pinterest images, GIFs, videos, boards, feeds, and related pins.**
 
 [![Version](https://img.shields.io/badge/version-1.0.1-E60023.svg)](manifest.json)
-[![Firefox](https://img.shields.io/badge/Firefox-140%2B-FF7139.svg?logo=mozilla-firefox&logoColor=white)](https://www.mozilla.org/firefox/)
+[![Pintgrab on Firefox](https://img.shields.io/badge/Firefox-140%2B-FF7139.svg?logo=mozilla-firefox&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/pintgrab/)
 [![Manifest](https://img.shields.io/badge/Manifest-V3-4285F4.svg)](manifest.json)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B.svg?logo=ko-fi&logoColor=white)](https://ko-fi.com/sbp359)
